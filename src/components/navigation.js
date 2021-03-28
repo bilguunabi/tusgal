@@ -19,7 +19,7 @@ export class Navigation extends Component {
               <span className="icon-bar"></span>{" "}
             </button>
             <a className="navbar-brand page-scroll" href="#page-top">
-              React Landing Page
+              Tusgal Videography
             </a>{" "}
           </div>
 
@@ -29,38 +29,28 @@ export class Navigation extends Component {
           >
             <ul className="nav navbar-nav navbar-right">
               <li>
-                <a href="#features" className="page-scroll">
-                  Features
+                <a href="#home" className="page-scroll">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="#packages" className="page-scroll">
+                  Packages
+                </a>
+              </li>
+              <li>
+                <a href="#gallery" className="page-scroll">
+                  Gallery
+                </a>
+              </li>
+              <li>
+                <a href="#contacts" className="page-scroll">
+                  Contacts
                 </a>
               </li>
               <li>
                 <a href="#about" className="page-scroll">
                   About
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="page-scroll">
-                  Services
-                </a>
-              </li>
-              <li>
-                <a href="#portfolio" className="page-scroll">
-                  Gallery
-                </a>
-              </li>
-              <li>
-                <a href="#testimonials" className="page-scroll">
-                  Testimonials
-                </a>
-              </li>
-              <li>
-                <a href="#team" className="page-scroll">
-                  Team
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="page-scroll">
-                  Contact
                 </a>
               </li>
             </ul>

@@ -1,0 +1,10 @@
+body {
+  background-color: #f6f6f6;
+}
+
+.package-item-box {
+  margin-right: 30px;
+  &:last-child {
+    margin-right: 0;
+  }
+}
