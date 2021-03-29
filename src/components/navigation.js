@@ -1,62 +1,76 @@
 import React, { Component } from "react";
+import { Button } from "antd";
+import Logo from "../logo.png";
 
 export class Navigation extends Component {
   render() {
     return (
-      <nav id="menu" className="navbar navbar-default navbar-fixed-top">
-        <div className="container">
-          <div className="navbar-header">
+      <div className="position-absolute w-100" style={{ zIndex: 1 }}>
+        <nav
+          className="navbar navbar-expand-lg navbar-light"
+          style={{ marginTop: 60 }}
+        >
+          <div className="container-fluid justify-content-center">
             <button
+              className="navbar-toggler position-absolute"
               type="button"
-              className="navbar-toggle collapsed"
-              data-toggle="collapse"
-              data-target="#bs-example-navbar-collapse-1"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+              style={{ left: 20 }}
             >
-              {" "}
-              <span className="sr-only">Toggle navigation</span>{" "}
-              <span className="icon-bar"></span>{" "}
-              <span className="icon-bar"></span>{" "}
-              <span className="icon-bar"></span>{" "}
+              <span className="navbar-toggler-icon"></span>
             </button>
-            <a className="navbar-brand page-scroll" href="#page-top">
-              Tusgal Videography
-            </a>{" "}
+            <div
+              className="collapse navbar-collapse flex-grow-0 me-5"
+              id="navbarSupportedContent"
+            >
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item me-3">
+                  <a
+                    className="nav-link active"
+                    aria-current="page"
+                    href="#home"
+                  >
+                    Home
+                  </a>
+                </li>
+                <li className="nav-item me-3">
+                  <a className="nav-link" href="#packages">
+                    Packages
+                  </a>
+                </li>
+                <li className="nav-item me-3">
+                  <a className="nav-link" href="#about">
+                    About
+                  </a>
+                </li>
+                <li className="nav-item me-3">
+                  <a className="nav-link" href="#services">
+                    Services
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <a className="navbar-brand me-0" href="#">
+              <img src={Logo} alt="logo" />
+            </a>
+            <div className="d-flex ms-4">
+              <div className="ms-4">
+                <span>Call Us:</span>
+                <span>
+                  <a type="link" href="tel:+773 490 6262" className="ms-2">
+                    +773 490 6262
+                  </a>
+                </span>
+              </div>
+              <Button className="t-btn ms-4">Contact Us</Button>
+            </div>
           </div>
-
-          <div
-            className="collapse navbar-collapse"
-            id="bs-example-navbar-collapse-1"
-          >
-            <ul className="nav navbar-nav navbar-right">
-              <li>
-                <a href="#home" className="page-scroll">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#packages" className="page-scroll">
-                  Packages
-                </a>
-              </li>
-              <li>
-                <a href="#gallery" className="page-scroll">
-                  Gallery
-                </a>
-              </li>
-              <li>
-                <a href="#contacts" className="page-scroll">
-                  Contacts
-                </a>
-              </li>
-              <li>
-                <a href="#about" className="page-scroll">
-                  About
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
     );
   }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Row, Col } from "antd";
-import PackageItem from "./packageItem";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
 export class packages extends Component {
   render() {
@@ -41,16 +42,51 @@ export class packages extends Component {
       <div id="packages" className="text-center">
         <div className="container">
           <Row>
-            <Col span={20} offset={2}>
-              <div className="section-title">
-                <h2>Packages</h2>
-              </div>
+            <Col span={24}>
+              <table border="1">
+                <thead>
+                  <tr>
+                    <td>Our Packages</td>
+                    <td>Basic $559</td>
+                    <td>Standard $559</td>
+                    <td>Premium $559</td>
+                    <td>Diamond $559</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Videographer</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                  </tr>
+                  <tr>
+                    <td>Wireless Mics</td>
+                    <td>
+                      <FontAwesomeIcon icon={faCaretDown} size="xs" />
+                    </td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                  </tr>
+                  <tr>
+                    <td>No Edit - Raw Footage Hard Drive</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                  </tr>
+                  <tr>
+                    <td>Digital Download</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                  </tr>
+                </tbody>
+              </table>
             </Col>
-          </Row>
-          <Row style={{ justifyContent: "center" }}>
-            {packages.map((el) => {
-              return <PackageItem package={el} />;
-            })}
           </Row>
         </div>
       </div>

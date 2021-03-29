@@ -1,10 +1,19 @@
 body {
-  background-color: #f6f6f6;
+  background-color: #fff;
+  margin: 0;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.package-item-box {
-  margin-right: 30px;
-  &:last-child {
-    margin-right: 0;
-  }
+.font-shadow {
+  font-family: "Shadows Into Light", cursive;
+}
+
+.t-btn {
+  border-radius: 20px;
+}
+.react-parallax-bgimage {
+  height: initial !important;
 }
