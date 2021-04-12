@@ -25,7 +25,7 @@ export class Header extends Component {
             bgImageSize={400}
             strength={500}
           >
-            <img src={BackgroundGif} style={{ width: "100%" }} />
+            <img src={BackgroundGif} style={{ width: "100%" }} alt="hair" />
           </Parallax>
           <div
             className="position-absolute"

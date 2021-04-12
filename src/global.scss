@@ -17,3 +17,106 @@ body {
 .react-parallax-bgimage {
   height: initial !important;
 }
+#packages {
+  padding-top: 20px;
+  margin-bottom: 40px;
+  .packages-section-title {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 26px;
+    margin-bottom: 25px;
+  }
+  .package-table {
+    text-align: center;
+    border-radius: 5px;
+    thead {
+      td {
+        padding: 0;
+      }
+      .table-logo {
+        background: #ededed;
+      }
+      .package-header {
+        width: 150px;
+        background: #2f4fd7;
+        color: white;
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+        .package-title {
+          font-size: 13px;
+        }
+        .package-price {
+          font-size: 26px;
+          font-weight: bold;
+        }
+        .package-best {
+          position: absolute;
+          background: orange;
+          width: 200px;
+          transform: rotate(-45deg);
+          top: 10px;
+          left: -81px;
+          font-size: 11px;
+        }
+      }
+    }
+    tbody {
+      border: 2px solid #bbb;
+      border-bottom: thin solid #eee;
+      border-radius: 5px;
+      .cell-service {
+        text-align: left;
+      }
+      tr td {
+        font-weight: bold;
+        font-size: 14px;
+        padding: 10px 10px;
+        border: thin solid #eee;
+      }
+    }
+    tfoot {
+      border: 2px solid #bbb;
+      border-top: thin solid #eee;
+      .select-plan-td {
+        background: white;
+        padding: 15px;
+        border: thin solid #eee;
+      }
+      .select-plan-blank-td {
+        background: #ffffff;
+        border: 2px solid #bbb;
+        border-bottom: 2px solid white;
+        border-left: 2px solid white;
+      }
+    }
+  }
+  .additional-collapse {
+    .ant-collapse-header {
+      span.anticon {
+        left: auto;
+        margin-left: 120px;
+      }
+    }
+    .additional-table {
+      width: 450px;
+      border: 2px solid #bbb;
+      tbody td {
+        border-bottom: thin solid #eee;
+        padding: 4px 10px;
+      }
+    }
+    .ant-collapse-content-box {
+      padding-top: 0;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+#gallery {
+  padding-top: 20px;
+}

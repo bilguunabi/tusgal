@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet";
 import Navigation from "./components/navigation";
 import Header from "./components/header";
 import Packages from "./components/packages";
-import About from "./components/about";
 import Gallery from "./components/gallery";
 import Contact from "./components/contact";
 import Favicon from "./Icon.svg";
@@ -22,7 +21,6 @@ export class App extends Component {
         <Navigation />
         <Header />
         <Packages />
-        <About />
         <Gallery />
         <Contact />
       </div>
