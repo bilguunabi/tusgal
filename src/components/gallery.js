@@ -5,10 +5,10 @@ export class Gallery extends Component {
   render() {
     return (
       <div id="gallery" className="text-center">
-        <video width="100%" height="auto" autoPlay loop muted>
+        {/* <video width="100%" height="auto" autoPlay loop muted>
           <source src={Video} type="video/mp4" />
           Your browser does not support the video tag.
-        </video>
+        </video> */}
         <div className="container">
           <div className="section-title">
             <h2>Gallery</h2>
