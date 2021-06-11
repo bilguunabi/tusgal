@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import Video from "../valorant.mp4";
+import Video from "../images/reel.mp4";
 
 export class Gallery extends Component {
   render() {
     return (
       <div id="gallery" className="text-center">
-        <video width="100%" height="auto" autoPlay loop>
+        <video width="100%" height="auto" autoPlay loop muted>
           <source src={Video} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
