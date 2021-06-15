@@ -22,6 +22,48 @@ const packages = [
     highlightVideo: false,
     fourK: false,
     cloud: false,
+    additionalServices: [
+      {
+        name: "Video Lights",
+        price: 200,
+      },
+      {
+        name: "Drone Footage",
+        price: 250,
+      },
+      {
+        name: "60 - 90 min Full Video Edit",
+        price: 400,
+      },
+      {
+        name: "3 - 5 min Cinematic Highlight Video",
+        price: 300,
+      },
+      {
+        name: "Physical discs DVD",
+        price: 40,
+      },
+      {
+        name: "Additional Camera",
+        price: 200,
+      },
+      {
+        name: "Photography Service",
+        price: 1000,
+      },
+      {
+        name: "Live Streaming",
+        price: 800,
+      },
+      {
+        name: "4K Video",
+        price: 10,
+      },
+      {
+        name: "Cloud Storage (1 year)",
+        price: 100,
+      },
+    ],
   },
   {
     id: 2,
@@ -38,6 +80,44 @@ const packages = [
     highlightVideo: false,
     fourK: false,
     cloud: false,
+    additionalServices: [
+      {
+        name: "Drone Footage",
+        price: 250,
+      },
+      {
+        name: "60 - 90 min Full Video Edit",
+        price: 400,
+      },
+      {
+        name: "3 - 5 min Cinematic Highlight Video",
+        price: 300,
+      },
+      {
+        name: "Physical discs DVD",
+        price: 40,
+      },
+      {
+        name: "Additional Camera",
+        price: 200,
+      },
+      {
+        name: "Photography Service",
+        price: 1000,
+      },
+      {
+        name: "Live Streaming",
+        price: 800,
+      },
+      {
+        name: "4K Video",
+        price: 10,
+      },
+      {
+        name: "Cloud Storage (1 year)",
+        price: 100,
+      },
+    ],
   },
   {
     id: 3,
@@ -54,6 +134,36 @@ const packages = [
     highlightVideo: false,
     fourK: false,
     cloud: false,
+    additionalServices: [
+      {
+        name: "3 - 5 min Cinematic Highlight Video",
+        price: 300,
+      },
+      {
+        name: "Physical discs DVD",
+        price: 40,
+      },
+      {
+        name: "Additional Camera",
+        price: 200,
+      },
+      {
+        name: "Photography Service",
+        price: 1000,
+      },
+      {
+        name: "Live Streaming",
+        price: 800,
+      },
+      {
+        name: "4K Video",
+        price: 10,
+      },
+      {
+        name: "Cloud Storage (1 year)",
+        price: 100,
+      },
+    ],
   },
   {
     id: 4,
@@ -70,6 +180,24 @@ const packages = [
     highlightVideo: true,
     fourK: true,
     cloud: true,
+    additionalServices: [
+      {
+        name: "Physical discs DVD",
+        price: 40,
+      },
+      {
+        name: "Additional Camera",
+        price: 200,
+      },
+      {
+        name: "Photography Service",
+        price: 1000,
+      },
+      {
+        name: "Live Streaming",
+        price: 800,
+      },
+    ],
   },
 ];
 const services = [
@@ -166,7 +294,7 @@ function Packages() {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [additionalServices, setAdditionalServices] = useState([]);
-  console.log(additionalServices);
+  const [totalPrice, setTotalPrice] = useState(0);
   return (
     <div id="packages" className="text-center">
       <div className="container">
@@ -261,9 +389,10 @@ function Packages() {
                 <td className="select-plan-blank-td"></td>
                 <td className="select-plan-td">
                   <Button
-                    onClick={() => {
+                    onClick={async () => {
                       setModalVisible(true);
-                      setSelectedPackage(packages.find((x) => x.id === 1));
+                      await setSelectedPackage(packages.find((x) => x.id === 1));
+                      setTotalPrice(599);
                     }}
                   >
                     Select Plan
@@ -274,6 +403,7 @@ function Packages() {
                     onClick={() => {
                       setModalVisible(true);
                       setSelectedPackage(packages.find((x) => x.id === 2));
+                      setTotalPrice(999);
                     }}
                   >
                     Select Plan
@@ -284,6 +414,7 @@ function Packages() {
                     onClick={() => {
                       setModalVisible(true);
                       setSelectedPackage(packages.find((x) => x.id === 3));
+                      setTotalPrice(1699);
                     }}
                   >
                     Select Plan
@@ -294,6 +425,7 @@ function Packages() {
                     onClick={() => {
                       setModalVisible(true);
                       setSelectedPackage(packages.find((x) => x.id === 4));
+                      setTotalPrice(2499);
                     }}
                   >
                     Select Plan
@@ -364,7 +496,7 @@ function Packages() {
         </div>
       </div>
       <Modal
-        title=""
+        title="&nbsp;"
         visible={modalVisible}
         centered
         destroyOnClose={true}
@@ -373,6 +505,7 @@ function Packages() {
         onCancel={() => {
           setModalVisible(false);
         }}
+        footer={false}
       >
         <Row gutter={24}>
           <Col span={12}>
@@ -449,117 +582,38 @@ function Packages() {
               ) : (
                 ""
               )}
-            </div>
-            <div>
-              {additionalServices.map((el) => {
-                return (
-                  <div>
-                    assssssss
-                    <Row gutter={24} className="serviceItem" key={el.id}>
-                      <Col flex="auto">{el.name}</Col>
-                      <Col flex="100px">{el.price}</Col>
-                    </Row>
-                  </div>
-                );
-              })}
               <Row gutter={24} className="serviceItem">
-                <Col flex="auto">terst</Col>
-                <Col flex="100px">asdasd</Col>
+                <Col flex="auto">Package Price</Col>
+                <Col flex="100px">${selectedPackage?.price}</Col>
               </Row>
             </div>
           </Col>
           <Col span={12}>
             <h2>Additional Services</h2>
+            {selectedPackage?.additionalServices.map((el) => {
+              return (
+                <div>
+                  <Row gutter={24} className="serviceItem" key={el.id}>
+                    <Col flex="auto">{el.name}</Col>
+                    <Col flex="100px">${el.price}</Col>
+                    <Col flex="80px">
+                      <Switch
+                        onChange={(e) => {
+                          if (e) setTotalPrice(totalPrice + el.price);
+                          else setTotalPrice(totalPrice - el.price);
+                        }}
+                      />
+                    </Col>
+                  </Row>
+                </div>
+              );
+            })}
             <div>
               <Row gutter={24} className="serviceItem">
-                <Col flex="auto">Video Lights</Col>
-                <Col flex="100px">{selectedPackage?.videoLights ? "" : "$200"}</Col>
-                <Col flex="80px">
-                  <Switch defaultChecked={selectedPackage?.videoLights} disabled={selectedPackage?.videoLights} />
+                <Col flex="auto">
+                  <b>TOTAL:</b>
                 </Col>
-              </Row>
-              <Row gutter={24} className="serviceItem">
-                <Col flex="auto">Drone Footage</Col>
-                <Col flex="100px">{selectedPackage?.droneFootage ? "" : "$250"}</Col>
-                <Col flex="80px">
-                  <Switch defaultChecked={selectedPackage?.droneFootage} disabled={selectedPackage?.droneFootage} />
-                </Col>
-              </Row>
-              <Row gutter={24} className="serviceItem">
-                <Col flex="auto">60 - 90 min Full Video Edit</Col>
-                <Col flex="100px">{selectedPackage?.videoEdit ? "" : "$400"}</Col>
-                <Col flex="80px">
-                  <Switch defaultChecked={selectedPackage?.videoEdit} disabled={selectedPackage?.videoEdit} />
-                </Col>
-              </Row>
-              <Row gutter={24} className="serviceItem">
-                <Col flex="auto">3 - 5 min Cinematic Highlight Video</Col>
-                <Col flex="100px">{selectedPackage?.highlightVideo ? "" : "$300"}</Col>
-                <Col flex="80px">
-                  <Switch defaultChecked={selectedPackage?.highlightVideo} disabled={selectedPackage?.highlightVideo} />
-                </Col>
-              </Row>
-              <Row gutter={24} className="serviceItem">
-                <Col flex="auto">Physical discs DVD</Col>
-                <Col flex="100px">$40</Col>
-                <Col flex="80px">
-                  <Switch
-                    onChange={(e) => {
-                      if (e) {
-                        // selected
-                        const list = additionalServices;
-                        list.push({
-                          id: 5,
-                          name: "Physical discs DVD",
-                          price: 40,
-                        });
-                        setAdditionalServices(list);
-                      } else {
-                        //remove from list
-                        setAdditionalServices(
-                          additionalServices.filter(function (service) {
-                            return service.id !== 5;
-                          })
-                        );
-                      }
-                    }}
-                  />
-                </Col>
-              </Row>
-              <Row gutter={24} className="serviceItem">
-                <Col flex="auto">Additional Camera</Col>
-                <Col flex="100px">$200</Col>
-                <Col flex="80px">
-                  <Switch />
-                </Col>
-              </Row>
-              <Row gutter={24} className="serviceItem">
-                <Col flex="auto">Photography Service</Col>
-                <Col flex="100px">$1000</Col>
-                <Col flex="80px">
-                  <Switch />
-                </Col>
-              </Row>
-              <Row gutter={24} className="serviceItem">
-                <Col flex="auto">Live Streaming</Col>
-                <Col flex="100px">$800</Col>
-                <Col flex="80px">
-                  <Switch />
-                </Col>
-              </Row>
-              <Row gutter={24} className="serviceItem">
-                <Col flex="auto">4K Video</Col>
-                <Col flex="100px">{selectedPackage?.fourK ? "" : ""}</Col>
-                <Col flex="80px">
-                  <Switch defaultChecked={selectedPackage?.fourK} disabled={selectedPackage?.fourK} />
-                </Col>
-              </Row>
-              <Row gutter={24} className="serviceItem">
-                <Col flex="auto">Cloud Storage (1 year)</Col>
-                <Col flex="100px">{selectedPackage?.cloud ? "" : ""}</Col>
-                <Col flex="80px">
-                  <Switch defaultChecked={selectedPackage?.cloud} disabled={selectedPackage?.cloud} />
-                </Col>
+                <Col flex="120px">{totalPrice}</Col>
               </Row>
             </div>
           </Col>
