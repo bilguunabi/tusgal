@@ -1,210 +1,96 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
+import { Row, Col, Modal } from "antd";
 import Video from "../images/reel.mp4";
 
-export class Gallery extends Component {
-  render() {
-    return (
-      <div id="gallery" className="text-center">
-        {/* <video width="100%" height="auto" autoPlay loop muted>
+function Gallery() {
+  const [selectedImgURL, setSelectedImgURL] = useState(null);
+  const [modalVisible, setModalVisible] = useState(null);
+  const imgList = [
+    {
+      id: 1,
+      url: process.env.PUBLIC_URL + "/img/gallery/gallery-image-1.jpg",
+    },
+    {
+      id: 2,
+      url: process.env.PUBLIC_URL + "/img/gallery/gallery-image-2.jpg",
+    },
+    {
+      id: 3,
+      url: process.env.PUBLIC_URL + "/img/gallery/gallery-image-3.jpg",
+    },
+    {
+      id: 4,
+      url: process.env.PUBLIC_URL + "/img/gallery/gallery-image-4.jpg",
+    },
+    {
+      id: 5,
+      url: process.env.PUBLIC_URL + "/img/gallery/gallery-image-5.jpg",
+    },
+    {
+      id: 6,
+      url: process.env.PUBLIC_URL + "/img/gallery/gallery-image-6.jpg",
+    },
+    {
+      id: 7,
+      url: process.env.PUBLIC_URL + "/img/gallery/gallery-image-7.jpg",
+    },
+    {
+      id: 8,
+      url: process.env.PUBLIC_URL + "/img/gallery/gallery-image-8.jpg",
+    },
+    {
+      id: 9,
+      url: process.env.PUBLIC_URL + "/img/gallery/gallery-image-9.jpg",
+    },
+  ];
+  return (
+    <div id="gallery" className="text-center">
+      {/* <video width="100%" height="auto" autoPlay loop muted>
           <source src={Video} type="video/mp4" />
           Your browser does not support the video tag.
         </video> */}
-        <div className="container">
-          <div className="section-title">
-            <h2>Gallery</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit duis sed
-              dapibus leonec.
-            </p>
-          </div>
-          <div className="row">
-            <div className="portfolio-items">
-              <div className="col-sm-6 col-md-4 col-lg-4">
-                <div className="portfolio-item">
-                  <div className="hover-bg">
-                    <a
-                      href="img/portfolio/01-large.jpg"
-                      title="Project Title"
-                      data-lightbox-gallery="gallery1"
+      <div className="container">
+        <div className="section-title">
+          <h2>Gallery</h2>
+        </div>
+        <div className="row">
+          <div className="portfolio-items">
+            <Row gutter={24}>
+              {imgList.map((el) => {
+                return (
+                  <Col span={8} key={el.id} className="mb-4">
+                    <div
+                      className="gallery-img-link"
+                      onClick={() => {
+                        setSelectedImgURL(el.url);
+                        setModalVisible(true);
+                      }}
                     >
-                      <div className="hover-text">
-                        <h4>Lorem Ipsum</h4>
-                      </div>
-                      <img
-                        src="img/portfolio/01-small.jpg"
-                        className="img-responsive"
-                        alt="Project Title"
-                      />
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="col-sm-6 col-md-4 col-lg-4">
-                <div className="portfolio-item">
-                  <div className="hover-bg">
-                    <a
-                      href="img/portfolio/02-large.jpg"
-                      title="Project Title"
-                      data-lightbox-gallery="gallery1"
-                    >
-                      <div className="hover-text">
-                        <h4>Adipiscing Elit</h4>
-                      </div>
-                      <img
-                        src="img/portfolio/02-small.jpg"
-                        className="img-responsive"
-                        alt="Project Title"
-                      />
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="col-sm-6 col-md-4 col-lg-4">
-                <div className="portfolio-item">
-                  <div className="hover-bg">
-                    <a
-                      href="img/portfolio/03-large.jpg"
-                      title="Project Title"
-                      data-lightbox-gallery="gallery1"
-                    >
-                      <div className="hover-text">
-                        <h4>Lorem Ipsum</h4>
-                      </div>
-                      <img
-                        src="img/portfolio/03-small.jpg"
-                        className="img-responsive"
-                        alt="Project Title"
-                      />
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="col-sm-6 col-md-4 col-lg-4">
-                <div className="portfolio-item">
-                  <div className="hover-bg">
-                    <a
-                      href="img/portfolio/04-large.jpg"
-                      title="Project Title"
-                      data-lightbox-gallery="gallery1"
-                    >
-                      <div className="hover-text">
-                        <h4>Lorem Ipsum</h4>
-                      </div>
-                      <img
-                        src="img/portfolio/04-small.jpg"
-                        className="img-responsive"
-                        alt="Project Title"
-                      />
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="col-sm-6 col-md-4 col-lg-4">
-                <div className="portfolio-item">
-                  <div className="hover-bg">
-                    <a
-                      href="img/portfolio/05-large.jpg"
-                      title="Project Title"
-                      data-lightbox-gallery="gallery1"
-                    >
-                      <div className="hover-text">
-                        <h4>Adipiscing Elit</h4>
-                      </div>
-                      <img
-                        src="img/portfolio/05-small.jpg"
-                        className="img-responsive"
-                        alt="Project Title"
-                      />
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="col-sm-6 col-md-4 col-lg-4">
-                <div className="portfolio-item">
-                  <div className="hover-bg">
-                    <a
-                      href="img/portfolio/06-large.jpg"
-                      title="Project Title"
-                      data-lightbox-gallery="gallery1"
-                    >
-                      <div className="hover-text">
-                        <h4>Dolor Sit</h4>
-                      </div>
-                      <img
-                        src="img/portfolio/06-small.jpg"
-                        className="img-responsive"
-                        alt="Project Title"
-                      />
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="col-sm-6 col-md-4 col-lg-4">
-                <div className="portfolio-item">
-                  <div className="hover-bg">
-                    <a
-                      href="img/portfolio/07-large.jpg"
-                      title="Project Title"
-                      data-lightbox-gallery="gallery1"
-                    >
-                      <div className="hover-text">
-                        <h4>Dolor Sit</h4>
-                      </div>
-                      <img
-                        src="img/portfolio/07-small.jpg"
-                        className="img-responsive"
-                        alt="Project Title"
-                      />
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="col-sm-6 col-md-4 col-lg-4">
-                <div className="portfolio-item">
-                  <div className="hover-bg">
-                    <a
-                      href="img/portfolio/08-large.jpg"
-                      title="Project Title"
-                      data-lightbox-gallery="gallery1"
-                    >
-                      <div className="hover-text">
-                        <h4>Lorem Ipsum</h4>
-                      </div>
-                      <img
-                        src="img/portfolio/08-small.jpg"
-                        className="img-responsive"
-                        alt="Project Title"
-                      />
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="col-sm-6 col-md-4 col-lg-4">
-                <div className="portfolio-item">
-                  <div className="hover-bg">
-                    <a
-                      href="img/portfolio/09-large.jpg"
-                      title="Project Title"
-                      data-lightbox-gallery="gallery1"
-                    >
-                      <div className="hover-text">
-                        <h4>Adipiscing Elit</h4>
-                      </div>
-                      <img
-                        src="img/portfolio/09-small.jpg"
-                        className="img-responsive"
-                        alt="Project Title"
-                      />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+                      <img src={el.url} className="img-responsive" alt="wedding-photo" style={{ width: "100%" }} />
+                    </div>
+                  </Col>
+                );
+              })}
+            </Row>
           </div>
         </div>
       </div>
-    );
-  }
+      <Modal
+        className="gallery-view"
+        centered
+        closeIcon={null}
+        visible={modalVisible}
+        footer={false}
+        onCancel={() => {
+          setModalVisible(false);
+        }}
+      >
+        <div>
+          <img src={selectedImgURL} className="img-responsive" alt="wedding-photo" style={{ width: "100%" }} />
+        </div>
+      </Modal>
+    </div>
+  );
 }
 
 export default Gallery;

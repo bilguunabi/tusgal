@@ -6,6 +6,7 @@ import Packages from "./components/packages";
 import Gallery from "./components/gallery";
 import Contact from "./components/contact";
 import Favicon from "./Icon.svg";
+
 export class App extends Component {
   render() {
     return (

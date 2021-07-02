@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Collapse, Button, Modal, Row, Col, Switch } from "antd";
+import { Collapse, Button, Modal, Row, Col, Switch, Carousel } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Logo from "../logo.png";
+
 import { faCheckCircle, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 
@@ -293,7 +294,6 @@ const services = [
 function Packages() {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState(null);
-  const [additionalServices, setAdditionalServices] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   return (
     <div id="packages" className="text-center">
@@ -303,32 +303,39 @@ function Packages() {
           <table className="package-table">
             <thead>
               <tr>
-                <td style={{ background: "#ededed" }}>
-                  <img src={Logo} alt="tusgal" style={{ width: 200 }} />
+                <td style={{ padding: "5px 20px 15px 20px" }}>
+                  <div style={{ textAlign: "left" }}>
+                    <div className="font-playfair font-weight-bold" style={{ fontSize: 24, marginBottom: 5 }}>
+                      Packages
+                    </div>
+                    <div style={{ fontSize: 14, fontStyle: "italic" }}>
+                      Our team will help to choose <br />
+                      package according to your <br />
+                      wishes and budget
+                    </div>
+                  </div>
                 </td>
-                <td>
+                <td style={{ background: "#b6b8a9" }}>
                   <div className="package-header">
                     <div className="package-title">Basic</div>
                     <div className="package-price">$559</div>
                   </div>
                 </td>
-                <td>
-                  <div className="package-header" style={{ background: "#2b43bf" }}>
-                    <div className="package-title" style={{ background: "#2b43bf" }}>
-                      Standard
-                    </div>
+                <td style={{ background: "#5c685e" }}>
+                  <div className="package-header">
+                    <div className="package-title">Standard</div>
                     <div className="package-price">$999</div>
                   </div>
                 </td>
-                <td>
-                  <div className="package-header" style={{ background: "#263aaa" }}>
+                <td style={{ background: "#455245" }}>
+                  <div className="package-header">
                     <div className="package-title">Premium</div>
                     <div className="package-price">$1699</div>
                     <div className="package-best">Best</div>
                   </div>
                 </td>
-                <td>
-                  <div className="package-header" style={{ background: "#1e3499" }}>
+                <td style={{ background: "#313b31" }}>
+                  <div className="package-header">
                     <div className="package-title">Diamond</div>
                     <div className="package-price">$2499</div>
                   </div>
@@ -496,7 +503,7 @@ function Packages() {
         </div>
       </div>
       <Modal
-        title="&nbsp;"
+        className="package-modal"
         visible={modalVisible}
         centered
         destroyOnClose={true}
@@ -507,117 +514,144 @@ function Packages() {
         }}
         footer={false}
       >
-        <Row gutter={24}>
-          <Col span={12}>
-            <h2>{selectedPackage?.name} Package</h2>
-            <div>
-              <Row gutter={24} className="serviceItem">
-                <Col flex="auto">Videographer</Col>
-                <Col flex="100px">{selectedPackage?.videographer}</Col>
-              </Row>
-              {selectedPackage?.wirelessMic ? (
-                <Row gutter={24} className="serviceItem">
-                  <Col span={24}>Wireless Mics</Col>
-                </Row>
-              ) : (
-                ""
-              )}
-              {selectedPackage?.rawFootage ? (
-                <Row gutter={24} className="serviceItem">
-                  <Col span={24}>No Edit - Raw Footage Hard Drive</Col>
-                </Row>
-              ) : (
-                ""
-              )}
-              {selectedPackage?.digitalDownload ? (
-                <Row gutter={24} className="serviceItem">
-                  <Col span={24}>Digital Download</Col>
-                </Row>
-              ) : (
-                ""
-              )}
-              <Row gutter={24} className="serviceItem">
-                <Col flex="auto">Hours of Video Coverage</Col>
-                <Col flex="100px">{selectedPackage?.hours} hours</Col>
-              </Row>
-              {selectedPackage?.videoLights ? (
-                <Row gutter={24} className="serviceItem">
-                  <Col span={24}>Video Lights</Col>
-                </Row>
-              ) : (
-                ""
-              )}
-              {selectedPackage?.droneFootage ? (
-                <Row gutter={24} className="serviceItem">
-                  <Col span={24}>Drone Footage</Col>
-                </Row>
-              ) : (
-                ""
-              )}
-              {selectedPackage?.videoEdit ? (
-                <Row gutter={24} className="serviceItem">
-                  <Col span={24}>60 - 90 min Full Video Edit</Col>
-                </Row>
-              ) : (
-                ""
-              )}
-              {selectedPackage?.highlightVideo ? (
-                <Row gutter={24} className="serviceItem">
-                  <Col span={24}>3 - 5 min Cinematic Highlight Video </Col>
-                </Row>
-              ) : (
-                ""
-              )}
-              {selectedPackage?.fourK ? (
-                <Row gutter={24} className="serviceItem">
-                  <Col span={24}>4K Video</Col>
-                </Row>
-              ) : (
-                ""
-              )}
-              {selectedPackage?.cloud ? (
-                <Row gutter={24} className="serviceItem">
-                  <Col span={24}>Cloud Storage (1 year)</Col>
-                </Row>
-              ) : (
-                ""
-              )}
-              <Row gutter={24} className="serviceItem">
-                <Col flex="auto">Package Price</Col>
-                <Col flex="100px">${selectedPackage?.price}</Col>
-              </Row>
-            </div>
-          </Col>
-          <Col span={12}>
-            <h2>Additional Services</h2>
-            {selectedPackage?.additionalServices.map((el) => {
-              return (
+        <Carousel>
+          <div class="modal-package-details">
+            <Row gutter={24}>
+              <Col span={11}>
+                <h3 className="font-playfair font-weight-bold" style={{ marginBottom: 30, textAlign: "center" }}>
+                  {selectedPackage?.name} Package
+                </h3>
                 <div>
-                  <Row gutter={24} className="serviceItem" key={el.id}>
-                    <Col flex="auto">{el.name}</Col>
-                    <Col flex="100px">${el.price}</Col>
-                    <Col flex="80px">
-                      <Switch
-                        onChange={(e) => {
-                          if (e) setTotalPrice(totalPrice + el.price);
-                          else setTotalPrice(totalPrice - el.price);
-                        }}
-                      />
+                  <Row gutter={24} className="serviceItem">
+                    <Col flex="auto">Videographer</Col>
+                    <Col flex="100px">{selectedPackage?.videographer}</Col>
+                  </Row>
+                  {selectedPackage?.wirelessMic ? (
+                    <Row gutter={24} className="serviceItem">
+                      <Col span={24}>Wireless Mics</Col>
+                    </Row>
+                  ) : (
+                    ""
+                  )}
+                  {selectedPackage?.rawFootage ? (
+                    <Row gutter={24} className="serviceItem">
+                      <Col span={24}>No Edit - Raw Footage Hard Drive</Col>
+                    </Row>
+                  ) : (
+                    ""
+                  )}
+                  {selectedPackage?.digitalDownload ? (
+                    <Row gutter={24} className="serviceItem">
+                      <Col span={24}>Digital Download</Col>
+                    </Row>
+                  ) : (
+                    ""
+                  )}
+                  <Row gutter={24} className="serviceItem">
+                    <Col flex="auto">Hours of Video Coverage</Col>
+                    <Col flex="100px">{selectedPackage?.hours} hours</Col>
+                  </Row>
+                  {selectedPackage?.videoLights ? (
+                    <Row gutter={24} className="serviceItem">
+                      <Col span={24}>Video Lights</Col>
+                    </Row>
+                  ) : (
+                    ""
+                  )}
+                  {selectedPackage?.droneFootage ? (
+                    <Row gutter={24} className="serviceItem">
+                      <Col span={24}>Drone Footage</Col>
+                    </Row>
+                  ) : (
+                    ""
+                  )}
+                  {selectedPackage?.videoEdit ? (
+                    <Row gutter={24} className="serviceItem">
+                      <Col span={24}>60 - 90 min Full Video Edit</Col>
+                    </Row>
+                  ) : (
+                    ""
+                  )}
+                  {selectedPackage?.highlightVideo ? (
+                    <Row gutter={24} className="serviceItem">
+                      <Col span={24}>3 - 5 min Cinematic Highlight Video </Col>
+                    </Row>
+                  ) : (
+                    ""
+                  )}
+                  {selectedPackage?.fourK ? (
+                    <Row gutter={24} className="serviceItem">
+                      <Col span={24}>4K Video</Col>
+                    </Row>
+                  ) : (
+                    ""
+                  )}
+                  {selectedPackage?.cloud ? (
+                    <Row gutter={24} className="serviceItem">
+                      <Col span={24}>Cloud Storage (1 year)</Col>
+                    </Row>
+                  ) : (
+                    ""
+                  )}
+                  <Row gutter={24} className="serviceItem">
+                    <Col flex="auto">Package Price</Col>
+                    <Col flex="100px">${selectedPackage?.price}</Col>
+                  </Row>
+                </div>
+              </Col>
+              <Col span={13}>
+                <h3 className="font-playfair font-weight-bold" style={{ marginBottom: 30, textAlign: "center" }}>
+                  Additional Services
+                </h3>
+                {selectedPackage?.additionalServices.map((el) => {
+                  return (
+                    <div>
+                      <Row gutter={24} className="serviceItem" key={el.id}>
+                        <Col flex="auto">{el.name}</Col>
+                        <Col flex="100px">${el.price}</Col>
+                        <Col flex="80px">
+                          <Switch
+                            onChange={(e) => {
+                              if (e) setTotalPrice(totalPrice + el.price);
+                              else setTotalPrice(totalPrice - el.price);
+                            }}
+                          />
+                        </Col>
+                      </Row>
+                    </div>
+                  );
+                })}
+              </Col>
+            </Row>
+            <Row gutter={24} style={{ marginTop: 35 }}>
+              <Col span={11}>
+                <div>
+                  <Row gutter={24} className="font-playfair">
+                    <Col flex="auto">
+                      <h3 className="font-weight-bold">Total</h3>
+                    </Col>
+                    <Col flex="120px">
+                      <h3 className="font-weight-bold">${totalPrice}</h3>
                     </Col>
                   </Row>
                 </div>
-              );
-            })}
-            <div>
-              <Row gutter={24} className="serviceItem">
-                <Col flex="auto">
-                  <b>TOTAL:</b>
-                </Col>
-                <Col flex="120px">{totalPrice}</Col>
-              </Row>
-            </div>
-          </Col>
-        </Row>
+              </Col>
+              <Col span={13}>
+                <Row gutter={24}>
+                  <Col span={12}>
+                    <Button className="t-btn-secondary w-100">Cancel</Button>
+                  </Col>
+                  <Col span={12}>
+                    <Button className="t-btn-primary w-100">Continue</Button>
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+          </div>
+          <div class="modal-package-details">
+            <Row>step2 </Row>
+          </div>
+        </Carousel>
       </Modal>
     </div>
   );

@@ -1,8 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
+
 body {
   background-color: #fff;
   margin: 0;
   font-size: 16px;
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -10,7 +12,42 @@ body {
 .font-shadow {
   font-family: "Shadows Into Light", cursive;
 }
-
+.font-playfair {
+  font-family: "Playfair Display SC", serif;
+}
+.font-weight-bold {
+  font-weight: 700;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.w-100 {
+  width: 100%;
+}
+.t-btn-primary {
+  background-color: #455245;
+  color: #f5f3f4;
+  border-color: #455245;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: #313b31;
+    color: #f5f3f4;
+    border-color: #455245;
+  }
+}
+.t-btn-secondary {
+  background-color: #f5f3f4;
+  color: #455245;
+  border-color: #455245;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: #ddd;
+    color: #455245;
+    border-color: #455245;
+  }
+}
 .t-btn {
   border-radius: 20px;
 }
@@ -38,9 +75,8 @@ body {
       }
       .package-header {
         width: 150px;
-        background: #2f4fd7;
         color: white;
-        height: 100px;
+        height: 108px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -120,11 +156,40 @@ body {
 #gallery {
   padding-top: 20px;
 }
-
 .serviceItem {
   margin-bottom: 10px;
 }
+.package-modal {
+  .ant-modal-content {
+    padding: 60px 50px 40px 50px;
+    background-color: #f5f3f4;
+    font-weight: 700;
+    .ant-modal-close-x {
+      display: none;
+    }
+  }
+  .ant-switch {
+    width: 52px;
+    background-color: #cfd0d2;
+    &.ant-switch-checked {
+      background-color: #5c6760;
+    }
+  }
+}
 
-.ant-modal-content {
-  padding: 60px;
+.gallery-view {
+  width: 100% !important;
+  max-width: 1366px;
+  .ant-modal-content {
+    .ant-modal-close {
+      display: none;
+    }
+    .ant-modal-body {
+      padding: 10px;
+    }
+  }
+}
+
+.gallery-img-link {
+  cursor: pointer;
 }
