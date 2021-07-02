@@ -4,7 +4,9 @@ import Navigation from "./components/navigation";
 import Header from "./components/header";
 import Packages from "./components/packages";
 import Gallery from "./components/gallery";
+import ContactConnector from "./components/contaccontactor";
 import Contact from "./components/contact";
+import Footer from "./components/footer";
 import Favicon from "./Icon.svg";
 
 export class App extends Component {
@@ -23,7 +25,9 @@ export class App extends Component {
         <Header />
         <Packages />
         <Gallery />
+        <ContactConnector />
         <Contact />
+        <Footer />
       </div>
     );
   }
